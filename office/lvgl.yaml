@@ -94,6 +94,7 @@ lvgl:
                   - lvgl.page.next:
                       animation: MOVE_LEFT
                       time: 300ms
+  json:
   pages:
     - id: weather_page
       width: 100%
