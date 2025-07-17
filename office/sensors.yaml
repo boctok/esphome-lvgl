@@ -15,7 +15,7 @@ globals:
 
 sensor:
 - platform: homeassistant
-  entity_id: sensor.environment_sensor_temperature_sensor
+  entity_id: sensor.gw2000b_indoor_temperature
   id: wz_temperature
   on_value:
     if:
@@ -25,7 +25,7 @@ sensor:
         - lambda: 'id(innen_temp_wert) = x;'
         - script.execute: update_temperatur_anzeige
 - platform: homeassistant
-  entity_id: sensor.aussentemperatur
+  entity_id: sensor.gw2000b_outdoor_temperature
   id: outdoor_temperature
   on_value:
     if:
@@ -35,7 +35,7 @@ sensor:
         - lambda: 'id(aussen_temp_wert) = x;'
         - script.execute: update_temperatur_anzeige
 - platform: homeassistant
-  entity_id: sensor.flur_temperatur_temperature
+  entity_id: sensor.h5075_794d_temperature
   id: flur_temperature_sensor
   on_value:
     if:
@@ -45,7 +45,7 @@ sensor:
         - lambda: 'id(flur_temp_wert) = x;'
         - script.execute: update_temperatur_anzeige
 - platform: homeassistant
-  entity_id: sensor.flur_temperatur_humidity
+  entity_id: sensor.h5075_794d_humidity
   id: flur_humidity_sensor
   on_value:
     if:
