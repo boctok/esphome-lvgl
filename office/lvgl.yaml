@@ -300,7 +300,6 @@ lvgl:
             checkable: true
             id: wz_blinds_toggle_button
             styles: control
-            json:
             widgets:
               - label:
                   text_font: $icon_font
