@@ -117,12 +117,12 @@ lvgl:
             text_font: roboto36_font
             text_color: 16777215
             text: !lambda |-
-              static const char* weekdays[] = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
+              static const char* weekdays[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
               auto now = id(sntp_time).now();
               if (now.is_valid()) {
                 return weekdays[now.day_of_week - 1];
               } else {
-                return "Unbekannt";
+                return "Unknown";
               }
         - label:
             id: date_label
@@ -134,7 +134,7 @@ lvgl:
             text_font: roboto36_font
             text_color: 16777215
             text: !lambda |-
-              static const char* months[] = {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"};
+              static const char* months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
               auto now = id(sntp_time).now();
               if (now.is_valid()) {
                 char date_buf[30];
@@ -240,7 +240,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: wz_lichtschalter_label
-                  text: "Wohnzimmer"
+                  text: "Living Room"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -263,7 +263,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: esszimmertisch_label
-                  text: "Esszimmer Tisch"
+                  text: "Dining Room Table"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -310,7 +310,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: wz_blinds_toggle_label
-                  text: "Jalousien"
+                  text: "Blinds"
             on_click:
               - if:
                   condition:
@@ -418,7 +418,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: wohnzimmer_stehlampe_label
-                  text: "Stehlampe"
+                  text: "Floor Lamp"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -441,7 +441,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: esszimmer_stehlampe_label
-                  text: "Stehlampe"
+                  text: "Floor Lamp"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -464,7 +464,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: wohnzimmer_deckenlampe_label
-                  text: "Deckenlampe"
+                  text: "Ceiling Light"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -487,7 +487,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: esszimmer_kugellampe_label
-                  text: "Kugellampe"
+                  text: "Round Lamp"
             on_click:
               - homeassistant.service:
                   service: light.toggle
@@ -533,7 +533,7 @@ lvgl:
                   text_font: $text_font
                   align: bottom_left
                   id: nische_label
-                  text: "Nische"
+                  text: "Niche"
             on_click:
               - homeassistant.service:
                   service: light.toggle
