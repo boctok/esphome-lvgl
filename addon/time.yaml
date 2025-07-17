@@ -2,7 +2,7 @@
 time:
   - platform: sntp
     id: sntp_time
-    timezone: "Europe/Berlin"
+    timezone: "America/New_York"
     servers:
      - 0.pool.ntp.org
      - 1.pool.ntp.org
@@ -33,17 +33,17 @@ time:
         - lvgl.label.update:
             id: weekday_label
             text: !lambda |-
-              static const char* weekdays[] = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
+              static const char* weekdays[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
               auto now = id(sntp_time).now();
               if (now.is_valid()) {
                 return weekdays[now.day_of_week - 1];
               } else {
-                return "Unbekannt";
+                return "Unknown";
               }
         - lvgl.label.update:
             id: date_label
             text: !lambda |-
-              static const char* months[] = {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"};
+              static const char* months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
               auto now = id(sntp_time).now();
               if (now.is_valid()) {
                 char date_buf[30];
@@ -80,16 +80,16 @@ time:
 text_sensor:
   - platform: template
     id: esphome_current_weekday_name
-    name: "ESPHome Wochentag Name"
+    name: "ESPHome Weekday Name"
     internal: true
     update_interval: 60s
     lambda: |-
       auto now = id(sntp_time).now();
       if (now.is_valid()) {
-        static const char* weekdays[] = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
+        static const char* weekdays[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         return std::string(weekdays[now.day_of_week - 1]);
       }
-      return std::string("Unbekannt");
+      return std::string("Unknown");
     on_value:
       then:
         - lvgl.label.update:
@@ -98,13 +98,13 @@ text_sensor:
 
   - platform: template
     id: esphome_current_date_formatted
-    name: "ESPHome Formatiertes Datum"
+    name: "ESPHome Formatted Date"
     internal: true
     update_interval: 60s
     lambda: |-
       auto now = id(sntp_time).now();
       if (now.is_valid()) {
-        static const char* months[] = {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"};
+        static const char* months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         char date_buf[30];
         snprintf(date_buf, sizeof(date_buf), "%02d. %s %d", now.day_of_month, months[now.month - 1], now.year);
         return std::string(date_buf);
