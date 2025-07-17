@@ -94,7 +94,6 @@ lvgl:
                   - lvgl.page.next:
                       animation: MOVE_LEFT
                       time: 300ms
-json:
   pages:
     - id: weather_page
       width: 100%
@@ -301,6 +300,7 @@ json:
             checkable: true
             id: wz_blinds_toggle_button
             styles: control
+            json:
             widgets:
               - label:
                   text_font: $icon_font
